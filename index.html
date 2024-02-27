@@ -3,9 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <title>Document</title>
+    <link href="css/main.css" rel="stylesheet">
 </head>
+<!--
+    UI 만드는 step
+    1. HTML/CSS로 미리 UI 디자인하기
+    2. 버튼 누르면 UI 보여주기
+-->
 <body>
-   
+   <div class="alert-box">
+        <span>알림창 </span>
+        <button onclick="alertHide()">닫기</button>
+    </div>
+   <button onclick=alertShow()>버튼</button>
 
+   <script>
+        const alertShow = () => {
+            document.querySelector(".alert-box").style.display = "block";
+        }
+
+        const alertHide = () => {
+            document.querySelector(".alert-box").style.display = "none";
+        }
+   </script>
 </body>
 </html>
