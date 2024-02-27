@@ -30,12 +30,12 @@
                  2. action에 있는 url로 데이터가 전송 된다. -->
             <form action="success.html">
                 <div class="my-3">
-                    <input type="text" class="form-control">
+                    <input type="text" id="id" class="form-control">
                 </div>
                 <div class="my-3">
-                    <input type="password" class="form-control">
+                    <input type="password" id="pw" class="form-control">
                 </div>
-                <button type="submit" class="btn btn-primary">전송</button>
+                <button type="submit" class="btn btn-primary" id="send">전송</button>
                 <button type="button" class="btn btn-danger" id="close">닫기</button>
             </form>
         </div>
@@ -68,34 +68,49 @@
     <!-- Main End -->
 
     <script>
-
-        // 전송 버튼 누르면 input에 입력한 값이 없으면 알림창
-        const validate = () => {
-            if(3==1){
-
-            } else {
-
-            }
-        }
-
-        // EventListener의 클릭 이벤트로 클래스 추가하기
+        // Navigation menu open
         document.querySelector('.navbar-toggler').addEventListener('click', () => {
-            // classList.add() : 해당 클래스에 클래스를 추가
-            // classList.toggle() : 해당 클래스가 없으면 추가, 있으면 제거
             document.querySelector('.list-group').classList.toggle('slide');
         })
 
         $('#sign_check').on('click', () => {
-            // document.querySelector('.black-bg').classList.add('show-modal');
             $('.black-bg').addClass('show-modal');
-            // $('.black-bg').css('display','block');
         });
 
         $('#close').on('click', () => {
-            // document.querySelector('.black-bg').classList.remove('show-modal');
             $('.black-bg').removeClass('show-modal');
-            // $('.black-bg').css('display','none');
         });
+
+        // input event 1
+        document.querySelector('#id').addEventListener('change', ()=>{
+            console.log(document.querySelector('#id').value);
+        });
+
+        // input event 2
+        document.querySelector('#id').addEventListener('input', ()=>{
+            console.log(document.querySelector('#pw').value);
+        });
+
+        // 전송 버튼 누르면 input에 입력한 값이 없으면 알림창
+        document.querySelector('form').addEventListener('submit', (e) => {
+            const id = document.querySelector('#id').value;
+            const pw = document.querySelector('#pw').value;
+            if(id === ''){
+                e.preventDefault();
+                alert("아이디를 입력하세요");
+            }
+            if(pw === ''){
+                e.preventDefault();
+                alert("비밀번호를 입력하세요");
+            }
+            if(pw.length < 6){
+                e.preventDefault();
+                alert("비밀번호가 맞지 않습니다.")
+            }
+
+            e.preventDefault();
+        });
+
     </script>
 
     <!-- Bootstrap -->
