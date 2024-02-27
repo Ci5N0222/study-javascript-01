@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <h1 id="hello">안녕하세요</h1>
+    <h1 id="hi">JS 초보에요</h1>
+    <script>
+        /**
+         * document : 문서 (HTML 문서)
+         * . : ~의
+         * element : 요소
+         * getElementById('???') : selector
+         * 프로그래밍 : 컴퓨터에게 일을 시키는 행위
+         * 컴퓨터는 사람처럼 대하면 못알아 먹기 때문에 자세하게 지시하는 코드를 작성해야한다.
+         */
+        
+        // element 변겨하는 법 : document.getElementById('???').??? = ???;
+        document.getElementById('hello').innerHTML = "안녕";
+        document.getElementById('hello').style.fontSize = "16px";
+
+        document.getElementById('hi').innerHTML = "JS 고수에요";
+    </script>
+
+</body>
+</html>
