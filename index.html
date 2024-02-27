@@ -14,12 +14,6 @@
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </head>
 
-<!--
-    UI 만드는 step
-    1. HTML/CSS로 미리 UI 디자인하기
-    2. 버튼 누르면 UI 보여주기
--->
-
 <body>
     <!-- 로그인 모달창 Start -->
     <div class="black-bg">
@@ -41,6 +35,7 @@
         </div>
     </div>
     <!-- 로그인 모달창 End -->
+    
     <!-- Navigation bar Start -->
     <nav class="navbar navbar-light bg-light" id="navigation">
         <div class="container-fluid">
@@ -247,8 +242,6 @@
         document.querySelector('form').addEventListener('submit', (e)=>{
             const id = document.querySelector('#id').value;
             const pw = document.querySelector('#pw').value;
-
-           
 
             if(id === ''){
                 alert("아이디를 입력하세요");
