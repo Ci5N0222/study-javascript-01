@@ -7,16 +7,22 @@
 </head>
 <body>
     
-    <script>
-        const game = (number) => {
-            if(number%3 === 0){
-                console.log("박수");
-            } else {
-                console.log("통과");
-            }
-        }
+    <p>태조 이성계가 태어난 년도는?</p>
+    <input type="text" id="answer">
+    <button id="send-answer">제출</button>
 
-        // game(9);
+    <script>
+
+        document.querySelector('#send-answer').addEventListener('click', ()=>{
+            let answer = document.querySelector('#answer').value;
+
+            if(answer == 1335){
+                alert("정답");
+            } else {
+                alert("오답");
+            }
+        })
+
 
         const success = (scrore1, scrore2) => {
             if(scrore1 != null && scrore2 != null){
@@ -32,7 +38,43 @@
             }
         }
 
-        success(39, 100);
+        // success(39, 100);
+
+
+        var firstMoeny = 10000;
+        var finalMoney = 0;
+        const bank = (year, money) => {
+            let count = 0;
+            while(true){
+                count++;
+                if(money >= 50000){
+                    firstMoeny += firstMoeny*0.2
+                } else {
+                    firstMoeny += firstMoeny*0.15
+                }
+                if(count === year) break;
+            }
+            finalMoney = firstMoeny;
+            console.log(finalMoney);
+        }
+        bank(2, firstMoeny);
+        
+
+        let firstCoffee = 360;
+        let totalCoffee = 0;
+        const coffee = (first) => {
+            let count = 0;
+            totalCoffee = firstCoffee;
+            while(true){
+                count++;
+                firstCoffee = firstCoffee/3*2;
+                totalCoffee = totalCoffee + firstCoffee;
+                if(count == 2) break;
+            }
+            console.log(totalCoffee);
+        }
+        coffee(firstCoffee);
+
     </script>
 </body>
 </html>
