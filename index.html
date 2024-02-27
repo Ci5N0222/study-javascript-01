@@ -45,16 +45,16 @@
     <nav class="navbar navbar-light bg-light" id="navigation">
         <div class="container-fluid">
             <a href="index.html"><span class="navbar-brand">Shopping</span></a>
-            <div style="float: right;">
-                <span class="badge bg-dark">Dark🔄 </span>
-            </div>
+            
             <button class="navbar-toggler" type="button">
                 <span class="navbar-toggler-icon"></span>
             </button>
         </div>
     </nav>
     <ul class="list-group">
-        <li class="list-group-item">An item</li>
+        <li class="list-group-item">
+            <span class="dark-mode">Dark Mode🔄 </span>
+        </li>
         <li class="list-group-item">A second item</li>
         <li class="list-group-item">A third item</li>
         <li class="list-group-item">A fourth item</li>
@@ -200,16 +200,16 @@
         var count = 0;
 
         // Dark 버튼 클릭 시 Light로 바꾸기
-        document.querySelector('.badge').addEventListener('click', ()=>{
+        document.querySelector('.dark-mode').addEventListener('click', ()=>{
             if(count%2 === 0){
-                document.querySelector('.badge').innerHTML = "Light🔄";
+                document.querySelector('.dark-mode').innerHTML = "Light Mode🔄";
                 document.querySelector('body').classList.add('dark');
                 document.querySelector('#navigation').classList.remove('navbar-light');
                 document.querySelector('#navigation').classList.remove('bg-light');
                 document.querySelector('#navigation').classList.add('navbar-light');
                 document.querySelector('#navigation').classList.add('bg-dark');
             } else {
-                document.querySelector('.badge').innerHTML = "Dark🔄";
+                document.querySelector('.dark-mode').innerHTML = "Dark Mode🔄";
                 document.querySelector('body').classList.remove('dark');
                 document.querySelector('#navigation').classList.add('navbar-light');
                 document.querySelector('#navigation').classList.add('bg-light');
