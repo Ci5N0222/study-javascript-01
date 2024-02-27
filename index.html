@@ -66,9 +66,29 @@
         <h4>Shirts on Sale</h4>
         <button type="button" id="sign_check" class="btn btn-primary">Sign-In</button>
     </div>
+
+    <div class="alert alert-danger">
+        <span id="timer">5</span>초 이내 구매시 사은품 증정!!
+    </div>
     <!-- Main End -->
 
     <script>
+        let timeCount = 5;
+       
+        let timer = setInterval(()=>{
+            timeCount--;
+            if(timeCount>= 0){
+                document.querySelector('#timer').innerHTML = timeCount;
+            }
+        }, 1000);
+
+        setTimeout(()=>{
+            document.querySelector('.alert').classList.add('hide');
+            clearTimeout(timer);
+        },5000)
+
+        
+
         var count = 0;
 
         // Dark 버튼 클릭 시 Light로 바꾸기
