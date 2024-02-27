@@ -11,6 +11,17 @@
     display: none;
 }
 
+.navbar {
+    position: fixed;
+    width: 100%;
+    z-index: 5;
+}
+
+.navbar-brand {
+    font-size: 25px;
+    transition: all 0.5s;
+}
+
 .list-group {
     height: 0px;
     overflow: hidden;

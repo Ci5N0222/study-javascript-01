@@ -41,11 +41,10 @@
         </div>
     </div>
     <!-- 로그인 모달창 End -->
-
     <!-- Navigation bar Start -->
     <nav class="navbar navbar-light bg-light" id="navigation">
         <div class="container-fluid">
-            <a href="index.html"><span class="navbar-brand">MAIN</span></a>
+            <a href="index.html"><span class="navbar-brand">Shopping</span></a>
             <span class="badge bg-dark">Dark🔄 </span>
             <button class="navbar-toggler" type="button">
                 <span class="navbar-toggler-icon"></span>
@@ -60,6 +59,18 @@
         <li class="list-group-item">And a fifth one</li>
     </ul>
     <!-- Navigation bar End -->
+    <script>
+        window.addEventListener('scroll', ()=>{
+
+            if(window.scrollY >= 100){
+                document.querySelector('.navbar-brand').style.fontSize = '20px';
+            } else {
+                document.querySelector('.navbar-brand').style.fontSize = '25px';
+            }
+        });
+    </script>
+    <div style="height: 55px;"></div>
+
 
     <!-- Main Start -->
     <div class="alert alert-danger">
@@ -70,6 +81,8 @@
         <h4>Shirts on Sale</h4>
         <button type="button" id="sign_check" class="btn btn-primary">Sign-In</button>
     </div>
+
+    <div style="height: 1000px;"></div>
 
     <!-- carousel : 이미지 슬라이드 -->
     <div style="overflow: hidden;">
@@ -92,7 +105,19 @@
     <button class="slide-3">3</button>
     <button class="next">></button>
 
- 
+    <div class="lorem" style="width: 200px; height: 100px; overflow-y: scroll;">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+        Magnam deleniti adipisci itaque velit temporibus facilis at quae numquam modi 
+        id vitae totam magni, cum soluta obcaecati, a sapiente cupiditate vero.
+    </div>
+    <script>
+        // div의 스크롤바 내린 양 == div의 실제 높이
+        document.querySelector('.lorem').addEventListener('scroll', ()=>{
+            let divValue = document.querySelector('.lorem').scrollHeight;
+            let scrollValue = document.querySelector('.lorem').scrollTop;
+        })
+    </script>
+
     <!-- Main End -->
     
     <script>
