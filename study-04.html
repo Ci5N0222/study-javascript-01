@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        const game = (number) => {
+            if(number%3 === 0){
+                console.log("박수");
+            } else {
+                console.log("통과");
+            }
+        }
+
+        // game(9);
+
+        const success = (scrore1, scrore2) => {
+            if(scrore1 != null && scrore2 != null){
+                if(scrore1 < 40 || scrore2 < 40){
+                    console.log("불합격");
+                } else if (scrore1+scrore2 < 120){
+                    console.log("불합격");
+                } else {
+                    console.log("합격")
+                }
+            } else {
+                console.log("점수를 입력하세요");
+            }
+        }
+
+        success(39, 100);
+    </script>
+</body>
+</html>
