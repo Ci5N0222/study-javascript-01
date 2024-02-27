@@ -11,20 +11,40 @@
     2. 버튼 누르면 UI 보여주기
 -->
 <body>
-   <div class="alert-box">
+   <div class="alert-box" id="alert_box">
         <span>알림창 </span>
-        <button onclick="alertHide()">닫기</button>
+        <button onclick="tagShowAndHide('alert_box', 'none')">닫기</button>
     </div>
-   <button onclick=alertShow()>버튼</button>
+   <button onclick="tagShowAndHide('alert_box', 'block')">알림창 열기</button>
+   <div class="alert-box" id="alert_text">
+   </div>
+
+    <button onclick="idText('alert_text')">아이디 입력</button>
+    <button onclick="pwText('alert_text')">비밀번호 입력</button>
 
    <script>
-        const alertShow = () => {
-            document.querySelector(".alert-box").style.display = "block";
+        /**
+         * 주의 사항
+         * 1. HTML 파일은 위에서 밑으로 읽기 때문에 조작할 HTML의 하단에 script code를 작성해야 한다.
+         * 2. Selector 오타 주의
+         * 3. 기본 문법 오타 주의
+         */
+
+        // Layout show & hide
+        const tagShowAndHide = (id, state) => {
+            document.getElementById(id).style.display = state;
         }
 
-        const alertHide = () => {
-            document.querySelector(".alert-box").style.display = "none";
+        const idText = (id) => {
+            tagShowAndHide(id, 'block');
+            document.getElementById('alert_text').innerHTML = "<p>아이디를 입력하세요.</p>";
         }
+
+        const pwText = (id) => {
+            tagShowAndHide(id, 'block');
+            document.getElementById('alert_text').innerHTML = "<p>비밀번호를 입력하세요.</p>";
+        }
+
    </script>
 </body>
 </html>
