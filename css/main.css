@@ -23,13 +23,17 @@
 }
 
 .list-group {
-    height: 0px;
+    width: 100%;
+    margin-top: 55px;
+    display: none;
+    position: fixed;
     overflow: hidden;
     transition: all 0.5s;
 }
 
 .slide {
     height: 210px;
+    display: block;
     overflow: auto;
 }
 
