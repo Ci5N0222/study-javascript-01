@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // toFixed(a) : a자리수 까지 출력하고 반올림
+        // toFixed() 는 문자로만들기 때문에 숫자로 사용하려면, return 시 숫자로 변환해야 한다.
+        // parseInt(), parseFloat 등이 숫자로 변환하는 대표적 함수
+        const vat = (a) => {
+            var num = (a * 1.1).toFixed(2);
+            return parseFloat(num);
+        }
+
+        console.log(vat(55555));
+
+    </script>
+</body>
+</html>
