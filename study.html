@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="./css/main.css" rel="stylesheet">
+</head>
+<!--
+    UI 만드는 step
+    1. HTML/CSS로 미리 UI 디자인하기
+    2. 버튼 누르면 UI 보여주기
+-->
+<body>
+    <nav class="navbar navbar-light bg-light">
+        <div class="container-fluid">
+            <span class="navbar-brand">Navbar</span>
+            <button class="navbar-toggler" type="button">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
+    </nav> 
+    <ul class="list-group">
+        <li class="list-group-item">An item</li>
+        <li class="list-group-item">A second item</li>
+        <li class="list-group-item">A third item</li>
+        <li class="list-group-item">A fourth item</li>
+        <li class="list-group-item">And a fifth one</li>
+    </ul>
+
+
+
+   <div class="alert-box" id="alert">
+        <p id="alert_box"></p>
+        <button id="close">닫기</button>
+    </div>
+    <button onclick="alertText('alert', '아이디')">아이디 입력</button>
+    <button onclick="alertText('alert', '비밀번호')">비밀번호 입력</button>
+
+    <button type="button" class="btn btn-primary">Primary</button>
+   <script>
+        /**
+         * 주의 사항
+         * 1. HTML 파일은 위에서 밑으로 읽기 때문에 조작할 HTML의 하단에 script code를 작성해야 한다.
+         * 2. Selector 오타 주의
+         * 3. 기본 문법 오타 주의
+         */
+
+
+        // EventListener의 클릭 이벤트로 클래스 추가하기
+        document.querySelector('.navbar-toggler').addEventListener('click', ()=>{
+            // classList.add() : 해당 클래스에 클래스를 추가
+            // classList.toggle() : 해당 클래스가 없으면 추가, 있으면 제거
+            document.querySelector('.list-group').classList.toggle('show');
+        })
+
+        document.querySelector('#close').addEventListener('click', ()=>{
+            tagShowAndHide('alert', 'none');
+        });
+
+
+        // Layout show & hide
+        const tagShowAndHide = (id, state) => {
+            document.getElementById(id).style.display = state;
+        }
+
+        const alertText = (id, content) => {
+            tagShowAndHide(id, 'block');
+            document.getElementById('alert_box').innerHTML = content+"를 입력하세요.";
+        }
+
+   </script>
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+</html>
