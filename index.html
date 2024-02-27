@@ -62,15 +62,72 @@
     <!-- Navigation bar End -->
 
     <!-- Main Start -->
+    <div class="alert alert-danger">
+        <span id="timer">5</span>초 이내 구매시 사은품 증정!!
+    </div>
+
     <div class="main-bg">
         <h4>Shirts on Sale</h4>
         <button type="button" id="sign_check" class="btn btn-primary">Sign-In</button>
     </div>
 
-    <div class="alert alert-danger">
-        <span id="timer">5</span>초 이내 구매시 사은품 증정!!
+    <!-- carousel : 이미지 슬라이드 -->
+    <div style="overflow: hidden;">
+        <div class="slide-container">
+            <div class="slide-box">
+                <img src="img/car1.png">
+            </div>
+            <div class="slide-box">
+                <img src="img/car2.png">
+            </div>
+            <div class="slide-box">
+                <img src="img/car3.png">
+            </div>
+        </div>
     </div>
+
+    <button class="slide-1">1</button>
+    <button class="slide-2">2</button>
+    <button class="slide-3">3</button>
+    <button class="next">다음</button>
+
+
     <!-- Main End -->
+    
+    <script>
+
+        /**
+         * 다음 버튼 누르면 지금 보이는 사진이 1번이면 2번 사진 보여주세요
+         */    
+         let painting = 0;
+         let slidePainting = document.querySelector('.slide-container');
+        document.querySelector('.next').addEventListener('click', ()=>{
+            if(painting === 0){
+                painting = 1;
+                slidePainting.style.transform = 'translateX(-100vw)';
+            } else if(painting === 1){
+                painting = 2;
+                slidePainting.style.transform = 'translateX(-200vw)';
+            } else {
+                painting = 0;
+                slidePainting.style.transform = 'translateX(0vw)'
+            }
+        })
+
+        // 이미지 슬라이드 구현
+        document.querySelector('.slide-1').addEventListener('click', ()=>{
+            painting = 0;
+            slidePainting.style.transform = 'translateX(0vw)';
+        });
+        document.querySelector('.slide-2').addEventListener('click', ()=>{
+            painting = 1;
+            slidePainting.style.transform = 'translateX(-100vw)';
+        });
+        document.querySelector('.slide-3').addEventListener('click', ()=>{
+            painting = 2;
+            slidePainting.style.transform = 'translateX(-200vw)';
+        });
+    </script>
 
     <script>
         let timeCount = 5;
@@ -140,18 +197,20 @@
             const id = document.querySelector('#id').value;
             const pw = document.querySelector('#pw').value;
 
-            // 정규식
+           
 
             if(id === ''){
-                e.preventDefault();
                 alert("아이디를 입력하세요");
             }
+
+             // 정규식
+            if(/\S+@\S+.\S+/.test(id)){
+                alert("이메일 형식이 아닙니다.")
+            }
             if(pw === ''){
-                e.preventDefault();
                 alert("비밀번호를 입력하세요");
             }
             if(pw.length < 6){
-                e.preventDefault();
                 alert("비밀번호가 맞지 않습니다.")
             }
 
