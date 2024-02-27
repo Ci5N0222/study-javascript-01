@@ -139,6 +139,9 @@
         document.querySelector('form').addEventListener('submit', (e)=>{
             const id = document.querySelector('#id').value;
             const pw = document.querySelector('#pw').value;
+
+            // 정규식
+
             if(id === ''){
                 e.preventDefault();
                 alert("아이디를 입력하세요");
