@@ -86,45 +86,69 @@
         </div>
     </div>
 
+    <button class="before"><</button>
     <button class="slide-1">1</button>
     <button class="slide-2">2</button>
     <button class="slide-3">3</button>
-    <button class="next">다음</button>
+    <button class="next">></button>
 
-
+ 
     <!-- Main End -->
     
     <script>
-
-        /**
-         * 다음 버튼 누르면 지금 보이는 사진이 1번이면 2번 사진 보여주세요
-         */    
-         let painting = 0;
-         let slidePainting = document.querySelector('.slide-container');
-        document.querySelector('.next').addEventListener('click', ()=>{
-            if(painting === 0){
-                painting = 1;
-                slidePainting.style.transform = 'translateX(-100vw)';
-            } else if(painting === 1){
-                painting = 2;
-                slidePainting.style.transform = 'translateX(-200vw)';
-            } else {
-                painting = 0;
-                slidePainting.style.transform = 'translateX(0vw)'
+        let paintingLength = 3;
+        let painting = 0;
+        let slidePainting = document.querySelector('.slide-container');
+        
+        // 이미지 슬라이드 "이전" 버튼으로 구현
+        document.querySelector('.before').addEventListener('click', ()=>{
+            if(painting > 0){
+                painting--;
             }
+            slidePainting.style.transform = `translateX(-${painting}00vw)`;
+            console.log(painting);
+            // if(painting === 1){
+            //     painting = 3;
+            //     slidePainting.style.transform = 'translateX(-200vw)';
+            // } else if(painting === 2){
+            //     painting = 1;
+            //     slidePainting.style.transform = 'translateX(0vw)';
+            // } else {
+            //     painting = 2;
+            //     slidePainting.style.transform = 'translateX(-100vw)'
+            // }
+        })
+
+        // 이미지 슬라이드 "다음" 버튼으로 구현
+        document.querySelector('.next').addEventListener('click', ()=>{
+            if(paintingLength-1 > painting){
+                painting++;
+            }
+            slidePainting.style.transform = `translateX(-${painting}00vw)`;
+            console.log(painting);
+            // if(painting === 1){
+            //     painting = 2;
+            //     slidePainting.style.transform = 'translateX(-100vw)';
+            // } else if(painting === 2){
+            //     painting = 3;
+            //     slidePainting.style.transform = 'translateX(-200vw)';
+            // } else {
+            //     painting = 1;
+            //     slidePainting.style.transform = 'translateX(0vw)'
+            // }
         })
 
         // 이미지 슬라이드 구현
         document.querySelector('.slide-1').addEventListener('click', ()=>{
-            painting = 0;
+            painting = 1;
             slidePainting.style.transform = 'translateX(0vw)';
         });
         document.querySelector('.slide-2').addEventListener('click', ()=>{
-            painting = 1;
+            painting = 2;
             slidePainting.style.transform = 'translateX(-100vw)';
         });
         document.querySelector('.slide-3').addEventListener('click', ()=>{
-            painting = 2;
+            painting = 3;
             slidePainting.style.transform = 'translateX(-200vw)';
         });
     </script>
