@@ -61,19 +61,50 @@
 
 <body>
     
+    <div class="container mt-3">
+        <div class="card p-3">
+            <p>상품명 / 가격</p>
+            <p id="product"></p>
+        </div>
+    </div>
+    <script>
+        /**
+         *  array 자료형
+         *  인덱싱 : array[0] -> array의 0번째 자료
+         *  let array = ['자료1', '자료2', '자료3'];
+         *  array[1] == '자료2'
+         * 
+         *  object 자료형
+         *  키:밸류 형태의 자료 -> {name(key): '자료'(vales)}
+         *  let object = {name: '자료1', id: '자료2'};
+         *  object.name == '자료1'
+         */
+
+         var car = ['소나타', 50000, 'white'];
+         var car2 = {name: '소나타', price: 50000};
+
+         // array 정렬
+         car.sort();
+         // 1번부터 y번전까지 자르기
+         var car3 = car.slice(1,3)
+
+         // object HTML에 적용하기
+         document.querySelector('#product').innerHTML = `${car2.name} / ${car2.price}`; 
+    </script>
+
     <div class="container mt-5">
-        <a href="/index.html">인덱스로</a><br /><br />
+        <p onclick="location.href='index.html'">Home</p>
         <ul class="list">
-            <li class="tab-button" data-id="0">Products</li>
-            <li class="tab-button orange" data-id="1">Information</li>
+            <li class="tab-button orange" data-id="0">Products</li>
+            <li class="tab-button" data-id="1">Information</li>
             <li class="tab-button" data-id="2">Shipping</li>
             <li class="tab-button" data-id="3">About</li>
         </ul>
 
-        <div class="tab-content">
+        <div class="tab-content show">
             <p>상품설명입니다. Product</p>
         </div>
-        <div class="tab-content show">
+        <div class="tab-content">
             <p>스펙설명입니다. Information</p>
         </div>
         <div class="tab-content">
