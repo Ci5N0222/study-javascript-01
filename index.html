@@ -55,17 +55,18 @@
         <li class="list-group-item">A fourth item</li>
         <li class="list-group-item">And a fifth one</li>
     </ul>
-    <!-- Navigation bar End -->
     <script>
+        // 스크롤 위치에 따라 Nav 로고 크기 변경
         window.addEventListener('scroll', ()=>{
-            if(window.scrollY >= 100){
+            if(window.scrollY > 100){
                 document.querySelector('.navbar-brand').style.fontSize = '20px';
             } else {
                 document.querySelector('.navbar-brand').style.fontSize = '25px';
             }
         });
     </script>
-    
+    <!-- Navigation bar End -->
+
     <div style="height: 58px;"></div>
 
 
@@ -103,6 +104,7 @@
     <button class="slide-3">3</button>
     <button class="next">></button>
 
+    <!-- div 박스 높이를 구해서 스크롤을 하였을 때 보이는 이벤트 -->
     <div class="lorem" style="width: 200px; height: 100px; overflow-y: scroll;">
         Lorem ipsum dolor sit amet consectetur adipisicing elit. 
         Magnam deleniti adipisci itaque velit temporibus facilis at quae numquam modi 
@@ -111,9 +113,24 @@
     <script>
         // div의 스크롤바 내린 양 == div의 실제 높이
         document.querySelector('.lorem').addEventListener('scroll', ()=>{
-            let divValue = document.querySelector('.lorem').scrollHeight;
+            // 스크롤 양
             let scrollValue = document.querySelector('.lorem').scrollTop;
+            // 실제 높이
+            let divValue = document.querySelector('.lorem').scrollHeight;
+            // 높이
+            let divHeight = document.querySelector('.lorem').clientHeight;
+
+            // 스크롤 양 + 높이 == 실제 높이
+            if(scrollValue+divHeight > divValue -1){
+                alert('다 읽었음');
+            }
+
         })
+
+        // 현재 페이지의 높이
+        // document.querySelector('html').scrollHeight
+        // document.querySelector('html').clientHeight
+
     </script>
 
     <!-- Main End -->
