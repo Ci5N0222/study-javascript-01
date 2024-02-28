@@ -96,6 +96,7 @@
     <form class="container my-5 form-group">
         <p>색상 선택</p>
         <select class="form-select mt-2">
+            <option>색상을 선택하세요</option>
             <option>White</option>
             <option>Black</option>
             <option>Grey</option>
@@ -111,12 +112,18 @@
         </select>
     </form>
     <script>
-        const selectorOne = document.querySelectorAll('.form-select')[0].value;
-        console.log(selectorOne);
-        // 유저가 색상을 골랐을 때 사이즈 보여주기
-        // if(){
-        //     document.querySelectorAll('.form-select')[1].classList.remove('form-hide');
-        // }
+        const selectorOne = document.querySelectorAll('.form-select')[0];
+        selectorOne.addEventListener('input', (e)=>{
+            console.log(selectorOne.value);
+
+            // 유저가 색상을 골랐을 때 사이즈 보여주기
+            if(selectorOne.value != '색상을 선택하세요'){
+                document.querySelectorAll('.form-select')[1].classList.remove('form-hide');
+            } else {
+                document.querySelectorAll('.form-select')[1].classList.add('form-hide');
+            }
+        })
+        
     </script>
 
     <div class="container mt-5">
