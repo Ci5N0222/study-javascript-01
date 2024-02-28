@@ -58,7 +58,6 @@
     <!-- Navigation bar End -->
     <script>
         window.addEventListener('scroll', ()=>{
-
             if(window.scrollY >= 100){
                 document.querySelector('.navbar-brand').style.fontSize = '20px';
             } else {
@@ -66,12 +65,14 @@
             }
         });
     </script>
-    <div style="height: 55px;"></div>
+    
+    <div style="height: 58px;"></div>
 
 
     <!-- Main Start -->
     <div class="alert alert-danger">
-        <span id="timer">5</span>초 이내 구매시 사은품 증정!!
+        <span id="timer">5</span>초 이후 사라집니다.
+        <span style="display: block; text-align: right;" onclick="modalHide('.alert')">닫기</span>
     </div>
 
     <div class="main-bg">
@@ -190,6 +191,9 @@
             clearTimeout(timer);
         },5000)
 
+        const modalHide = (element) => {
+            document.querySelector(element).classList.add('hide');
+        }
         
 
         var count = 0;
