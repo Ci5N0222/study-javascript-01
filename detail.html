@@ -80,8 +80,8 @@
          *  object.name == '자료1'
          */
 
-         var car = ['소나타', 50000, 'white'];
-         var car2 = {name: '소나타', price: [50000, 30000, 40000]};
+         var car = ['남성용 셔츠', 50000, 'white'];
+         var car2 = {name: '남성용 셔츠', price: [50000, 30000, 40000]};
 
          // array 정렬
          car.sort();
@@ -93,8 +93,33 @@
          document.querySelector('.car-price').innerHTML = ` 가격 : ${car2.price[0]}`; 
     </script>
 
+    <form class="container my-5 form-group">
+        <p>색상 선택</p>
+        <select class="form-select mt-2">
+            <option>White</option>
+            <option>Black</option>
+            <option>Grey</option>
+            <option>Blue</option>
+            <option>Red</option>
+        </select>
+        <select class="form-select mt-2 form-hide">
+            <option>S (90)</option>
+            <option>M (95)</option>
+            <option>L (100)</option>
+            <option>XL (105)</option>
+            <option>XXL (110)</option>
+        </select>
+    </form>
+    <script>
+        const selectorOne = document.querySelectorAll('.form-select')[0].value;
+        console.log(selectorOne);
+        // 유저가 색상을 골랐을 때 사이즈 보여주기
+        // if(){
+        //     document.querySelectorAll('.form-select')[1].classList.remove('form-hide');
+        // }
+    </script>
+
     <div class="container mt-5">
-        <p onclick="location.href='index.html'">Home</p>
         <ul class="list">
             <li class="tab-button orange" data-id="0">Products</li>
             <li class="tab-button" data-id="1">Information</li>
