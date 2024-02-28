@@ -94,7 +94,7 @@
     </script>
 
     <form class="container my-5 form-group">
-        <p>색상 선택</p>
+        <p>옵션 선택</p>
         <select class="form-select mt-2">
             <option>색상을 선택하세요</option>
             <option>White</option>
@@ -129,7 +129,7 @@
         const selectorOne = document.querySelectorAll('.form-select');
 
         const white = ['S (90)', 'M (95)', 'L (100)'];
-        const black = ['L (100)', 'XL (105)', 'XXL  (110)'];
+        const black = ['L (100)', 'XL (품절)', 'XXL  (110)'];
 
         selectorOne[0].addEventListener('input', (e)=>{
             // this 값을 쓰고 싶으면 allow function을 쓰지 않고 일반 function()을 써야 한다.
@@ -167,7 +167,6 @@
                               <option>XL (105)</option>`;
                 selectorOne[1].innerHTML = option;
 
-                
             }
         })
 
