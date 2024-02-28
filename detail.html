@@ -104,26 +104,78 @@
             <option>Red</option>
         </select>
         <select class="form-select mt-2 form-hide">
+            <option>사이즈를 선택하세요</option>
             <option>S (90)</option>
             <option>M (95)</option>
             <option>L (100)</option>
             <option>XL (105)</option>
-            <option>XXL (110)</option>
         </select>
     </form>
-    <script>
-        const selectorOne = document.querySelectorAll('.form-select')[0];
-        selectorOne.addEventListener('input', (e)=>{
-            console.log(selectorOne.value);
 
+    <div class="create-html">
+
+    </div>
+    <script>
+
+        // 자바스크립트로 html 요소 생성(2)
+        // let template = '<p>안녕@</p>';
+        // document.querySelector('.create-html').insertAdjacentHTML('beforeend', template);
+
+        // 자바스크립트로 html 요소 생성(1)
+        // let pTag = document.createElement('p');
+        // pTag.innerHTML = "안녕!";
+        // document.querySelector('.create-html').appendChild(pTag);
+
+        const selectorOne = document.querySelectorAll('.form-select');
+
+        const white = ['S (90)', 'M (95)', 'L (100)'];
+        const black = ['L (100)', 'XL (105)', 'XXL  (110)'];
+
+        selectorOne[0].addEventListener('input', (e)=>{
+            // this 값을 쓰고 싶으면 allow function을 쓰지 않고 일반 function()을 써야 한다.
+            // let value = this.value : 값 이상하게 나옴
+            let value = e.currentTarget.value;
+            
             // 유저가 색상을 골랐을 때 사이즈 보여주기
-            if(selectorOne.value != '색상을 선택하세요'){
-                document.querySelectorAll('.form-select')[1].classList.remove('form-hide');
+            if(selectorOne[0].value == '색상을 선택하세요'){
+                selectorOne[1].classList.add('form-hide');
+
+            } else if(value == "White"){
+                selectorOne[1].classList.remove('form-hide');
+                selectorOne[1].innerHTML = '';
+                white.forEach((item)=>{
+                    let option = document.createElement('option');
+                    option.textContent = item;
+                    selectorOne[1].append(option);
+                })
+                
+            } else if(value == "Black"){
+                selectorOne[1].classList.remove('form-hide');
+                selectorOne[1].innerHTML = '';
+                black.forEach((item)=>{
+                    let option = document.createElement('option');
+                    option.textContent = item;
+                    selectorOne[1].append(option);
+                })
+
             } else {
-                document.querySelectorAll('.form-select')[1].classList.add('form-hide');
+                selectorOne[1].classList.remove('form-hide');
+                let option = `<option>사이즈를 선택하세요</option>
+                              <option>S (90)</option>
+                              <option>M (95)</option>
+                              <option>L (100)</option>
+                              <option>XL (105)</option>`;
+                selectorOne[1].innerHTML = option;
+
+                
             }
         })
-        
+
+        // Object 갯수만큼 반복문
+        // let obj = {name: 'kim', age: 20};
+        // for(var key in obj){
+        //     console.log(key + obj[key]);
+        // }
     </script>
 
     <div class="container mt-5">
