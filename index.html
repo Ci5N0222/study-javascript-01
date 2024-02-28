@@ -35,9 +35,26 @@
         </div>
     </div>
     <script>
-        document.querySelector('.black-bg').addEventListener('click', ()=>{
+        const blackBg =  document.querySelector('.black-bg');
+        blackBg.addEventListener('click', (e)=>{
+
             // 영역 외의 부분 누르면 창 닫기
-            document.querySelector('.black-bg').classList.remove('show-modal');
+            if(e.target === blackBg){
+                blackBg.classList.remove('show-modal');
+            }
+
+            // 유저가 실제로 클릭한 HTML 요소
+            // e.target;
+
+            // 이벤트리스너가 작성된 곳
+            // this;
+            // e.currentTarget;
+
+            // 이벤트 기본동작을 막아주는 효과 (submit의 경우 submit의 동작을 막아준다)
+            // e.preventDefault();
+
+            // 상위요소로 이벤트 버블링을 막아준다.
+            // e.stopPropagation();
         })
     </script>
     <!-- 로그인 모달창 End -->
@@ -71,10 +88,14 @@
             }
         });
         
+        const navList = document.querySelector('.list-group');
+        
         // Navigation menu open
-        document.querySelector('.navbar-toggler').addEventListener('click', () => {
+        document.querySelector('.navbar-toggler').addEventListener('click', (e) => {
             document.querySelector('.list-group').classList.toggle('slide');
         });
+        
+        
 
     </script>
     <!-- Navigation bar End -->
