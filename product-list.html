@@ -16,7 +16,7 @@
 </head>
 
 <body>
-
+    <input type="hidden" id="more" value="1">
     <div class="card-group container">
         <div class="row"></div>
         <button class="btn form-control" onclick="moreProducts()">더보기</button>
@@ -24,6 +24,7 @@
 
 
     <script>
+        let moreCount = document.querySelector('#more').value;
         var products = [
             { id: 0, price: 70000, title: 'Blossom Dress' },
             { id: 1, price: 50000, title: 'Springfield Shirt' },
@@ -41,16 +42,18 @@
         })
 
         const  moreProducts = async() => {
-            const more = await ajaxCall('https://codingapple1.github.io/js/more1.json', 'GET');
+            const more = await ajaxCall(`https://codingapple1.github.io/js/more${moreCount}.json`, 'GET');
             more.forEach((item) => {
-            let template = `
-            <div class="col-sm-4">
-                <img src="https://via.placeholder.com/600" class="w-100">
-                <h5>${item.title}</h5>
-                <p>${item.price}</p>
-            </div>`;
-            $('.row').append(template);
-        })
+                let template = `
+                <div class="col-sm-4">
+                    <img src="https://via.placeholder.com/600" class="w-100">
+                    <h5>${item.title}</h5>
+                    <p>${item.price}</p>
+                </div>`;
+                $('.row').append(template);
+                
+            })
+            moreCount++;
         }
 
         const ajaxCall = async(url, method, body) => {
