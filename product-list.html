@@ -83,17 +83,34 @@
 
             let array = [7, 3, 5, 2, 40];
             // 문자 정렬
-            array.sort()
+            array.sort();
 
             // 숫자 정렬
             array.sort((a, b) => {
                 // 1. a와 b는 array 안의 자료
                 // 2. return 오른쪽이 양수면 a를 오른쪽으로
                 // 3. return 오른쪽이 음수면 b를 오른쪽으로
-                // ** 숫자 오름 차순 : return a-b;
-                // ** 숫자 내림 차순 : return b-a;
+                    // ** 숫자 오름 차순 : return a-b;
+                    // ** 숫자 내림 차순 : return b-a;
                 return a - b;
+            });
+
+            // array의 자료 중 원하는 것만 필터하여 사용
+            // filter 문법은 변수에 저장하여 사용하여야 한다.
+            let newArray = array.filter((a)=>{
+                // 4보다 작은 값만 필터링하여 newArray에 저장
+                return a < 4;
+            });
+
+            // array 자료 전부를 변형
+            let newArray2 = array.map((a)=>{
+                // 어레이 자료에 전부 4를 곱한채로 newArray2에 저장
+                return a * 4;
             })
+
+            // .sort() : 원본 변형 O
+            // .filter(), .map() : 원본 변형 X
+
 
             const priceDownSort = () => {
                 products.sort((a, b) => {
@@ -126,7 +143,6 @@
                     $('.row').append(template);
                 })
             }
-
         </script>
 
 
