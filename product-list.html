@@ -176,6 +176,7 @@
                     localStorage.setItem('cart', JSON.stringify([title]));
                 } else {
                     cart = JSON.parse(localStorage.getItem('cart'));
+                    // 중복이 있으면 중복 제거
                     cart.filter((item)=>{
                         if(item == title){
                             
