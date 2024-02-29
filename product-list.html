@@ -21,8 +21,10 @@
     <div class="container mt-3" style="margin-bottom: 10px;">
         <div class="card p-3">
             <span>
-                <button class="btn-primary" onclick="priceDownSort()">낮은가격순</button>
-                <button class="btn-primary" onclick="priceUpSort()">높은가격순</button>
+                <button onclick="priceDownSort()">낮은가격순</button>
+                <button onclick="priceUpSort()">높은가격순</button>
+                <button onclick="titleUpSort()">상품명정렬(오름차순)</button>
+                <button onclick="priceSelect(60000)">6만원이하 상품만 보기</button>
             </span>
         </div>
     </div>
@@ -143,6 +145,45 @@
                     $('.row').append(template);
                 })
             }
+
+            const titleUpSort = () => {
+                products.sort((a, b)=>{
+                    if(a.title < b.title) {
+                        return  1;
+                    } else if(a.title > b.title) {
+                        return -1;
+                    } else {
+                        return 0;
+                    }
+                });
+                $('.row').html('');
+                products.forEach((item) => {
+                    let template = `
+                        <div class="col-sm-4">
+                            <img src="https://via.placeholder.com/600" class="w-100">
+                            <h5>${item.title}</h5>
+                            <p>가격 : ${item.price}원</p>
+                        </div>`;
+                    $('.row').append(template);
+                })
+            }
+
+            const priceSelect = (price) => {
+                const newProduct = products.filter((item)=>{
+                    return item.price <= price;
+                });
+                $('.row').html('');
+                newProduct.forEach((item) => {
+                    let template = `
+                        <div class="col-sm-4">
+                            <img src="https://via.placeholder.com/600" class="w-100">
+                            <h5>${item.title}</h5>
+                            <p>가격 : ${item.price}원</p>
+                        </div>`;
+                    $('.row').append(template);
+                })
+            }
+
         </script>
 
 
