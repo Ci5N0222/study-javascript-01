@@ -1,7 +1,7 @@
 .grey {
     background: lightgrey;
-    height: 2000px;
-    margin-top: 500px;
+    height: 1000px;
+    margin-top: 150px;
 }
 
 .image {
@@ -13,5 +13,7 @@
 
 .text {
     float: left;
-    width: 300px;
+    width: 200px;
+    margin-left: 25px;
+    margin-top: 100px;
 }
