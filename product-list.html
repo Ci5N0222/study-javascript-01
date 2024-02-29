@@ -17,67 +17,123 @@
 
 <body>
     <input type="hidden" id="more" value="1">
-    <div class="card-group container">
-        <div class="row"></div>
-        <button class="btn form-control" onclick="moreProducts()">더보기</button>
+
+    <div class="container mt-3" style="margin-bottom: 10px;">
+        <div class="card p-3">
+            <span>
+                <button class="btn-primary" onclick="priceDownSort()">낮은가격순</button>
+                <button class="btn-primary" onclick="priceUpSort()">높은가격순</button>
+            </span>
+        </div>
     </div>
 
+    <div class="card-group container">
+        <div class="card-group container">
+            <div class="row"></div>
+            <button class="btn form-control" onclick="moreProducts()">더보기</button>
+        </div>
 
-    <script>
-        let moreCount = document.querySelector('#more').value;
-        var products = [
-            { id: 0, price: 70000, title: 'Blossom Dress' },
-            { id: 1, price: 50000, title: 'Springfield Shirt' },
-            { id: 2, price: 60000, title: 'Black Monastery' }
-        ];
+        <script>
+            let moreCount = document.querySelector('#more').value;
+            var products = [
+                { id: 0, price: 70000, title: 'Blossom Dress' },
+                { id: 1, price: 50000, title: 'Springfield Shirt' },
+                { id: 2, price: 60000, title: 'Black Monastery' }
+            ];
 
-        products.forEach((item) => {
-            let template = `
-            <div class="col-sm-4">
-                <img src="https://via.placeholder.com/600" class="w-100">
-                <h5>${item.title}</h5>
-                <p>${item.price}</p>
-            </div>`;
-            $('.row').append(template);
-        })
-
-        const  moreProducts = async() => {
-            const more = await ajaxCall(`https://codingapple1.github.io/js/more${moreCount}.json`, 'GET');
-            more.forEach((item) => {
+            products.forEach((item) => {
                 let template = `
-                <div class="col-sm-4">
-                    <img src="https://via.placeholder.com/600" class="w-100">
-                    <h5>${item.title}</h5>
-                    <p>${item.price}</p>
-                </div>`;
+                    <div class="col-sm-4">
+                        <img src="https://via.placeholder.com/600" class="w-100">
+                        <h5>${item.title}</h5>
+                        <p>가격 : ${item.price}원</p>
+                    </div>`;
                 $('.row').append(template);
-                
             })
-            moreCount++;
-        }
 
-        const ajaxCall = async(url, method, body) => {
-            let result;
-            try{
-                const response = await fetch(url, {
-                    method: 'GET'
+            const moreProducts = async () => {
+                const more = await ajaxCall(`https://codingapple1.github.io/js/more${moreCount}.json`, 'GET');
+                more.forEach((item) => {
+                    let template = `
+                        <div class="col-sm-4">
+                            <img src="https://via.placeholder.com/600" class="w-100">
+                            <h5>${item.title}</h5>
+                            <p>가격 : ${item.price}원</p>
+                        </div>`;
+                    $('.row').append(template);
+
                 })
-                result = await response.json();
-            } catch(e) {
-                console.log(`Error : ${e}`);
-                return `{Error : ${e}}`;
+                moreCount++;
             }
-            console.log(JSON.stringify(result));
-            return result;
-        }
 
-    </script>
+            const ajaxCall = async (url, method, body) => {
+                let result;
+                try {
+                    const response = await fetch(url, {
+                        method: 'GET'
+                    })
+                    result = await response.json();
+                } catch (e) {
+                    console.log(`Error : ${e}`);
+                    return `{Error : ${e}}`;
+                }
+                console.log(JSON.stringify(result));
+                return result;
+            }
+
+            let array = [7, 3, 5, 2, 40];
+            // 문자 정렬
+            array.sort()
+
+            // 숫자 정렬
+            array.sort((a, b) => {
+                // 1. a와 b는 array 안의 자료
+                // 2. return 오른쪽이 양수면 a를 오른쪽으로
+                // 3. return 오른쪽이 음수면 b를 오른쪽으로
+                // ** 숫자 오름 차순 : return a-b;
+                // ** 숫자 내림 차순 : return b-a;
+                return a - b;
+            })
+
+            const priceDownSort = () => {
+                products.sort((a, b) => {
+                    return a.price - b.price;
+                })
+                $('.row').html('');
+                products.forEach((item) => {
+                    let template = `
+                        <div class="col-sm-4">
+                            <img src="https://via.placeholder.com/600" class="w-100">
+                            <h5>${item.title}</h5>
+                            <p>가격 : ${item.price}원</p>
+                        </div>`;
+                    $('.row').append(template);
+                })
+            }
+
+            const priceUpSort = () => {
+                products.sort((a, b) => {
+                    return b.price - a.price;
+                })
+                $('.row').html('');
+                products.forEach((item) => {
+                    let template = `
+                        <div class="col-sm-4">
+                            <img src="https://via.placeholder.com/600" class="w-100">
+                            <h5>${item.title}</h5>
+                            <p>가격 : ${item.price}원</p>
+                        </div>`;
+                    $('.row').append(template);
+                })
+            }
+
+        </script>
 
 
-    <!-- Bootstrap -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-        crossorigin="anonymous"></script>
+        <!-- Bootstrap -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+            crossorigin="anonymous"></script>
 
 
 </body>
