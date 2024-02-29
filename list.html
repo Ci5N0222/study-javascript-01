@@ -57,6 +57,23 @@
             document.querySelectorAll('.card-body h5')[i].innerHTML = products[i].title;
             document.querySelectorAll('.card-body p')[i].innerHTML = `가격 : ${products[i].price}`;
         }
+
+        products.forEach((item)=> {
+          let template = `
+            <div class="card" data-id="2">
+              <img src="https://via.placeholder.com/600">
+              <div class="card-body">
+                <h5 class="car-title"> ${item.title}</h5>
+                <p class="car-price">가격 : ${item.price}</p>
+                <button class="btn btn-danger">주문하기</button>
+              </div>
+            </div>`;
+            $('.row').append(template);
+        })
+
+        
+
+
       </script> 
 
 
