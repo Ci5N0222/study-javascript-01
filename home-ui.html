@@ -28,33 +28,13 @@
             let height = $(window).scrollTop();
             console.log(height);
 
-            // 시작~끝 : 1119~1421 (차이 : 302)
-            // opacity 1~0으로 변경
-            // 1차 함수 : y = a * 높이 + b
-            /**
-             *  2188a + b = 0.9
-             *  1898a + b = 1
-             *  290a = 0.1
-             *  2900a = 1
-             *  a = -1/D
-             * 
-             * 2188*(-1/2900) +b = 1
-             * b = 1 + 2188/2900
-             * b = 5088/2900
-             */
-            if(height > 1110 && height <1430){
-                let y1 = -1/302 * height + 145/30;
-                let z1 = -1/3020 * height + 4139/3020;
-                $('.card-box').eq(0).css('transform', `scale(${z1})`);
-                $('.card-box').eq(0).css('opacity', y1);
-            }
-            if(height > 1960 && height < 2190){
-                let y2 = -1/290 * height + 240/30;
-                let z2 = -1/2900 * height + 5088/2900;
-                $('.card-box').eq(1).css('transform', `scale(${z2})`);
-                $('.card-box').eq(1).css('opacity', y2);
-            }
-            // 1898~2188
+            let y1 = -1/240 * height + 1353/240;
+            $('.card-box').eq(0).css('opacity', y1);
+
+            // 2071~2491
+            let y2 = -1/300 * height + 2420/300;
+            $('.card-box').eq(1).css('opacity', y2);
+
         });
     </script>
 </body>
