@@ -32,10 +32,14 @@
     <div class="card-group container">
         <div class="card-group container">
             <div class="row"></div>
-            <button class="btn form-control" onclick="moreProducts()">더보기</button>
+            <button class="btn form-control" style="margin-top: 20px;" onclick="moreProducts()">더보기</button>
         </div>
 
         <script>
+
+            // local storage
+            localStorage.setItem('name', 'kim');
+
             let moreCount = document.querySelector('#more').value;
             var products = [
                 { id: 0, price: 70000, title: 'Blossom Dress' },
@@ -49,6 +53,7 @@
                         <img src="https://via.placeholder.com/600" class="w-100">
                         <h5>${item.title}</h5>
                         <p>가격 : ${item.price}원</p>
+                        <button class="buy" style="display:block; margin-left:auto; margin-right:auto;">장바구니</button>
                     </div>`;
                 $('.row').append(template);
             })
@@ -57,10 +62,11 @@
                 const more = await ajaxCall(`https://codingapple1.github.io/js/more${moreCount}.json`, 'GET');
                 more.forEach((item) => {
                     let template = `
-                        <div class="col-sm-4">
+                        <div class="col-sm-4"">
                             <img src="https://via.placeholder.com/600" class="w-100">
                             <h5>${item.title}</h5>
                             <p>가격 : ${item.price}원</p>
+                            <button class="buy" style="display:block; margin-left:auto; margin-right:auto;">장바구니</button>
                         </div>`;
                     $('.row').append(template);
                     products.push(item);
@@ -83,49 +89,6 @@
                 return result;
             }
 
-            let array = [7, 3, 5, 2, 40];
-            // 문자 정렬(desc)
-            array.sort();
-
-            // 문자 정렬(asc)
-            array.sort((a, b)=>{
-                if(a < b){
-                    return 1;
-                } else if(a > b) {
-                    return -1;
-                } else {
-                    // a == b
-                    return 0;
-                }
-            })
-
-            // 숫자 정렬
-            array.sort((a, b) => {
-                // 1. a와 b는 array 안의 자료
-                // 2. return 오른쪽이 양수면 a를 오른쪽으로
-                // 3. return 오른쪽이 음수면 b를 오른쪽으로
-                    // ** 숫자 오름 차순 : return a-b;
-                    // ** 숫자 내림 차순 : return b-a;
-                return a - b;
-            });
-
-            // array의 자료 중 원하는 것만 필터하여 사용
-            // filter 문법은 변수에 저장하여 사용하여야 한다.
-            let newArray = array.filter((a)=>{
-                // 4보다 작은 값만 필터링하여 newArray에 저장
-                return a < 4;
-            });
-
-            // array 자료 전부를 변형
-            let newArray2 = array.map((a)=>{
-                // 어레이 자료에 전부 4를 곱한채로 newArray2에 저장
-                return a * 4;
-            });
-
-            // .sort() : 원본 변형 O
-            // .filter(), .map() : 원본 변형 X
-
-
             const priceDownSort = () => {
                 products.sort((a, b) => {
                     return a.price - b.price;
@@ -137,6 +100,7 @@
                             <img src="https://via.placeholder.com/600" class="w-100">
                             <h5>${item.title}</h5>
                             <p>가격 : ${item.price}원</p>
+                            <button class="buy" style="display:block; margin-left:auto; margin-right:auto;">장바구니</button>
                         </div>`;
                     $('.row').append(template);
                 });
@@ -153,6 +117,7 @@
                             <img src="https://via.placeholder.com/600" class="w-100">
                             <h5>${item.title}</h5>
                             <p>가격 : ${item.price}원</p>
+                            <button class="buy" style="display:block; margin-left:auto; margin-right:auto;">장바구니</button>
                         </div>`;
                     $('.row').append(template);
                 });
@@ -175,6 +140,7 @@
                             <img src="https://via.placeholder.com/600" class="w-100">
                             <h5>${item.title}</h5>
                             <p>가격 : ${item.price}원</p>
+                            <button class="buy" style="display:block; margin-left:auto; margin-right:auto;">장바구니</button>
                         </div>`;
                     $('.row').append(template);
                 });
@@ -191,11 +157,35 @@
                             <img src="https://via.placeholder.com/600" class="w-100">
                             <h5>${item.title}</h5>
                             <p>가격 : ${item.price}원</p>
+                            <button class="buy" style="display:block; margin-left:auto; margin-right:auto;">장바구니</button>
                         </div>`;
                     $('.row').append(template);
                 });
             }
             
+            /**
+             * 1. 장바구니 버튼 누르면
+             * 2. 지금 누른 장바구니 버튼 형재 태그 가져와서
+             * 3. localStorage에 저장
+             */
+
+             $('.buy').click(function(e){
+                let cart = []
+                let title = $(e.target).siblings('h5').text();
+                if(!localStorage.getItem('cart')){
+                    localStorage.setItem('cart', JSON.stringify([title]));
+                } else {
+                    cart = JSON.parse(localStorage.getItem('cart'));
+                    cart.filter((item)=>{
+                        if(item == title){
+                            
+                        } 
+                    });
+                    localStorage.setItem('cart', JSON.stringify(cart));
+                }
+                console.log(JSON.stringify(localStorage.getItem('cart')));
+             })
+
         </script>
 
 
