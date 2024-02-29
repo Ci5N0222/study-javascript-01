@@ -3,21 +3,26 @@
  * 
  */
 
-let url = 'https://codingapple1.github.io/hello.txt';
+let url = 'https://codingapple1.github.io/price.json';
 let method = 'get';
+
 const respone = async(url, method, body) => {
-    console.log("ajax request");
-    const respone = await fetch(url, {
-        method: method,
-        body: JSON.stringify(body)
-    })
-    console.log(JSON.stringify(respone));
+    let result = {};
+    try {
+        const respone = await fetch(url, {
+            headers: {"Content-Type" : "application/json"},
+            method: method,
+            mode: "no-cors",
+            body: JSON.stringify(body)
+        });
+        console.log(await JSON.stringify(respone));
+        // const result = await respone.json();
+        // console.log(JSON.stringify(result));
+        // return result;
+    } catch(e) {
+        console.log(`Error: ${e}`);
+        return e;
+    }
 }
 
-fetch(url)
-.then(res => res.json())
-.then(data => {
-    console.log(data);
-})
-
-// await respone(url, method);
+respone(url, method);
