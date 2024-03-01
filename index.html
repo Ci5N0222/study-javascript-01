@@ -157,6 +157,7 @@
 
         $('.slide-box').eq(0).on('mousemove', (e)=>{
             console.log(e.clientX - start);
+            $('.slide-container').css('transform', `translateX(${e.clientX-start}px)`)
         })
 
     </script>
