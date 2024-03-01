@@ -150,14 +150,19 @@
     </div>
     <script>
         let start = 0;
-        
+        let mouseDown = false;
         $('.slide-box').eq(0).on('mousedown', (e)=>{
-            start = e.clientX;    
+            start = e.clientX;
+            mouseDown = true;
+        })
+        $('.slide-box').eq(0).on('mouseup', (e)=>{
+            mouseDown = false;
         })
 
         $('.slide-box').eq(0).on('mousemove', (e)=>{
-            console.log(e.clientX - start);
-            $('.slide-container').css('transform', `translateX(${e.clientX-start}px)`)
+            if(mouseDown == true){
+                $('.slide-container').css('transform', `translateX(${e.clientX-start}px)`)
+            }
         })
 
     </script>
