@@ -149,9 +149,16 @@
         </div>
     </div>
     <script>
-        $('.slide-box').eq(0).on('mousemove', (e)=>{
-            console.log(e.clientX);
+        let start = 0;
+        
+        $('.slide-box').eq(0).on('mousedown', (e)=>{
+            start = e.clientX;    
         })
+
+        $('.slide-box').eq(0).on('mousemove', (e)=>{
+            console.log(e.clientX - start);
+        })
+
     </script>
 
     <button class="before"><</button>
