@@ -101,6 +101,7 @@ body {
     position: sticky;
     top: 200px;
     margin-top: 500px;
+    transition: all 0.2s;
 }
 
 .card-box img{
