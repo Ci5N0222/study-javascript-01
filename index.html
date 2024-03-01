@@ -155,15 +155,26 @@
             start = e.clientX;
             mouseDown = true;
         })
-        $('.slide-box').eq(0).on('mouseup', (e)=>{
-            mouseDown = false;
-        })
+        
 
         $('.slide-box').eq(0).on('mousemove', (e)=>{
             if(mouseDown == true){
-                $('.slide-container').css('transform', `translateX(${e.clientX-start}px)`)
+                $('.slide-container').css('transform', `translateX(${e.clientX-start}px)`);
             }
         })
+
+        $('.slide-box').eq(0).on('mouseup', (e)=>{
+            mouseDown = false;
+            if(e.target-start < -100){
+                $('.slide-container').css('transition','all 0.5s').css('transform', 'translateX(100vw)');
+            } else {
+                $('.slide-container').css('transition','all 0.5s').css('transform', 'translateX(0vw)');
+            }
+        })
+
+        setTimeout(()=>{
+            $('.slide-container').css('transition','none')
+        }, 500)
 
     </script>
 
