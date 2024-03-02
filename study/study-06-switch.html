@@ -16,7 +16,7 @@
 </head>
 
 <body>
-    <div class="quiz" id="quiz1">
+    <div class="quiz">
         <h4>1. 물에 빠지면 누구먼저 구할 것인가?</h4>
         <button onclick="test(1)">와이프</button>
         <button onclick="test(2)">부모님</button>
@@ -26,32 +26,56 @@
         <h4>당신은 <span id="res"></span></h4>
     </div>
     
-    <div class="quiz" id="quiz2">
+    <div class="quiz" id="quiz">
         <h4>2. 지금 당신이 제일 먹고 싶은 음식은?</h4>
         <button>한식</button>
         <button>일식</button>
         <button>중식</button>
         <button>양식</button>
+
+        <h4>당신은 <span id="quiz_res"></span></h4>
     </div>
     
     <script>
+        // onClick 을 이용하여 함수로 이벤트를 발생
         const test = (req) => {
-            let res = document.querySelector('#res')
+            let res = document.querySelector('#res');
             switch (req) {
                 case 1:
-                    res.innerHTML = "와이프를 구했습니다."
+                    res.innerHTML = "와이프를 구했습니다.";
                     break;
                 case 2:
-                    res.innerHTML = "부모님을 구했습니다."
+                    res.innerHTML = "부모님을 구했습니다.";
                     break;
                 case 3:
-                    res.innerHTML = "친구를 구했습니다."                    
+                    res.innerHTML = "친구를 구했습니다.";                
                     break;
                 default:
-                    res.innerHTML = "반려견을 구했습니다."
+                    res.innerHTML = "반려견을 구했습니다.";
             }   
         }
 
+        // 상위 태그의 e.target을 사용하여 이벤트 발생
+        document.querySelector('#quiz').addEventListener('click', (e)=> {
+            let res = document.querySelector('#quiz_res');
+            switch (e.target.innerHTML) {
+                case "한식":
+                    res.innerHTML = "한식이 먹고 싶군요.";
+                    break;
+                case "일식":
+                    res.innerHTML = "일식이 먹고 싶군요.";
+                    break;
+                case "중식":
+                    res.innerHTML = "중식이 먹고 싶군요.";
+                    break;
+                case "양식":
+                    res.innerHTML = "양식이 먹고 싶군요.";
+                    break;
+            
+                default:
+                    break;
+            }
+        })
         
     </script>
 
