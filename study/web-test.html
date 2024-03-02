@@ -6,18 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        .body {
+        body {
             margin: 0px;
         }
         .nav-form {
             background: black;
             color: white;
             width: 100%;
-            padding: 15px;
             font-size: 16px;
         }
         .nav-form span {
-            margin-right: 15px;
+            margin-right: 20px;
             color: lightgrey;
         }
 
@@ -25,17 +24,39 @@
             background: #eee;
             width: 100%;
             height: 500px;
-            padding: 20px
         }
         .container-form input {
             width: 150px;
-            height: 25px;
+            height: 20px;
+            margin: 10px;
+        }
+
+        .container-product {
+            width: 100%;
+            height: 300px;
         }
 
         .cart-form{
-            background: gray;
-            width: 80%;
-            height: 300px;
+            background: lightgray;
+            width: 95%;
+            height: 200px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .cart-form p {
+            margin: 15px;
+            padding-top: 15px;
+            padding-left: 15px;
+            font-weight: 700;
+        }
+        .cart-add {
+            background: black;
+            width: 90%;
+            height: 150px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
         }
     </style>
 </head>
@@ -51,9 +72,16 @@
     
     <!-- Content -->
     <div class="container-form">
-        <input type="text" id="find" placeholder="검색어 입력">
-        <div class="container-product"></div>
-        <div class="cart-form"></div>
+        <div class="container-product">
+            <input type="text" id="find" placeholder="검색어 입력">
+            <div class="product-form"></div>
+        </div>
+        
+
+        <div class="cart-form">
+            <p>장바구니</p>
+            <div class="cart-add"></div>
+        </div>
     
     </div>
 
