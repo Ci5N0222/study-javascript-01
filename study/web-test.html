@@ -163,9 +163,8 @@
             ]
         }
     }
-    let product = response.value.products
-    console.log(product);
 
+    let product = response.value.products
     product.forEach((item)=>{
         let productItem = `
             <div class="product-form">
@@ -176,6 +175,27 @@
                 <button>담기</button>
             </div>`;
         $('.container-product').append(productItem);
+    });
+
+    // 인풋 검색에 맞는 상품만 보여주기
+    document.querySelector('#find').addEventListener('input', (e)=>{
+        let find = e.currentTarget.value.toLowerCase();
+        let filteredProducts = product.filter((item)=>item.title.toLowerCase().includes(find))
+        console.log(filteredProducts);
+        if(filteredProducts.length > 0){
+            $('.container-product').html('')
+            filteredProducts.forEach((item)=>{
+                let productItem = `
+                    <div class="product-form">
+                        <img src="../img/${item.photo}">
+                        <h4>${item.title}</h4>
+                        <p>${item.brand}</p>
+                        <span>가격 : ${item.price}</span>
+                        <button>담기</button>
+                    </div>`;
+            $('.container-product').append(productItem);
+    });
+        }
     });
 
     </script>
