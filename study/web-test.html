@@ -83,12 +83,14 @@
     <div class="container-form">
         <input type="text" id="find" placeholder="검색어 입력">
         <div class="container-product">
+
             <div class="product-form">
                 <img src="../img/pr1.JPG">
                 <h4>식기세척기</h4>
                 <p>세척나라</p>
                 <p>가격 : 10000</p>
                 <button>담기</button>
+
             </div>
         </div>
         
@@ -137,8 +139,22 @@
             ]
         }
     }
+    let product = response.value.products
+    console.log(product);
 
-    console.log(response);
+    let productForm = document.querySelector('.container-product')
+    product.forEach((item)=>{
+        let productItem = `
+            <div class="product-form">
+                <img src="../img/${item.photo}">
+                <h4>${item.title}</h4>
+                <p>${item.brand}</p>
+                <p>가격 : ${item.price}</p>
+                <button>담기</button>
+            </div>`;
+            
+            productForm.appendCh(productItem);
+    })
 
     </script>
     
