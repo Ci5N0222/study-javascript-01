@@ -97,7 +97,11 @@
 
 
     <script>
-
+        const dataAjax = async() => {
+            const response = await fetch('/study/store.json')
+            const result = response.json();
+            console.log(JSON.stringify(result));
+        }
     </script>
     
 </body>
